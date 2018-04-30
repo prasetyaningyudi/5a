@@ -66,8 +66,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-
+<script>
+	var d = new Date();
+	var n = d.getHours();
+	console.log(n);
+</script>
 <div id="container">
+
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">

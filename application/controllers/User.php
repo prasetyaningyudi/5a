@@ -17,7 +17,8 @@ class User extends CI_Controller {
 		foreach($result as $row){
 			$a = $row->CREATE_DATE;
 			$a = strtotime($a)-2*60*60;
-			$a = date("Y-m-d h:i:sa", $a);
+			var_dump($a);
+			$a = date("Y-m-d h:i:s A", $a);
 			var_dump($a);
 		}
 		echo "<br>";
@@ -26,10 +27,12 @@ class User extends CI_Controller {
 		echo date('d-m-Y h:i:s A');
 		echo "<br>";
 		date_default_timezone_set("Asia/Tokyo");
-		echo date('d-m-Y h:i:s A');	
+		echo date('d-m-Y h:i:s A');
 		echo "<br>";
-		var_dump(localtime(time(),true)); 
 		
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML('<h1>Hello world!</h1>');
+$mpdf->Output();		
 
 	}
 	
