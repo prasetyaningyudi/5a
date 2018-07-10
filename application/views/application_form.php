@@ -2,7 +2,7 @@
 	<h1 class="w3-center w3-text-green">Drop Your CV</h1>
 </div>
 <div class="w3-card-2">
-<form action="" type="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
 	<div class="w3-container w3-display-container w3-green w3-block" onclick="myFunction('content_1')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Data Pelamar</h3>
@@ -48,6 +48,7 @@
 		</p>		
 	</div>
 	<br>
+
 	<div class="w3-container w3-display-container w3-green  w3-block" onclick="myFunction('content_2')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">CV/Resume dan Photo</h3>
@@ -139,7 +140,7 @@
 		<input name="cek_4" id="cek_1" class="w3-check" type="checkbox" required>
 		<label>Dengan memberi tanda ceklist di kotak ini, Dengan ini saya menyatakan bahwa semua informasi diisi dengan sesungguhnya. Apabila di kemudian hari ditemukan hal-hal yang bertentangan, maka saya bersedia dituntut sesuai dengan hukum yang berlaku dan lamaran ini dapat dibatalkan.</label>
 		</p>
-		
+
 		<p>
 		<input type="submit" name="submit" class="w3-btn w3-teal" style="width:120px" value="Kirim"></p>
 		</p>
