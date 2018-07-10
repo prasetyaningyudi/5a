@@ -30,9 +30,9 @@ class User extends CI_Controller {
 		echo date('d-m-Y h:i:s A');
 		echo "<br>";
 		
-$mpdf = new \Mpdf\Mpdf();
-$mpdf->WriteHTML('<h1>Hello world!</h1>');
-$mpdf->Output();		
+		$mpdf = new \Mpdf\Mpdf();
+		$mpdf->WriteHTML('<h1>Hello world!</h1>');
+		$mpdf->Output();		
 
 	}
 	
