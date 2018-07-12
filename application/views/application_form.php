@@ -3,6 +3,7 @@
 </div>
 <div class="w3-card-2">
 <form action="" method="post" enctype="multipart/form-data">
+
 	<div class="w3-container w3-display-container w3-green w3-block" onclick="myFunction('content_1')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Data Pelamar</h3>
@@ -53,7 +54,7 @@
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">CV/Resume dan Photo</h3>
 	</div>	
-	<div class="w3-container w3-hide" id="content_2">
+	<div class="w3-container w3-show" id="content_2">
 		<p>
 		<label>Pilih file CV/Resume untuk diunggah</label>
 		<input class="w3-input w3-border" type="file" accept=".pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="cv" required>
@@ -64,8 +65,9 @@
 		<input class="w3-input w3-border" type="file" accept="image/*" name="photo" required>
 		</p>		
 	</div>
-	
 	<br>
+	
+
 	<div class="w3-container w3-display-container w3-green  w3-block" onclick="myFunction('content_3')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Pengalaman Kerja Terakhir</h3>
@@ -116,7 +118,7 @@
 		</div>
 		</p>			
 	</div>	
-	
+
 	<br>
 	<div class="w3-container w3-display-container w3-green  w3-block" onclick="myFunction('content_5')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
