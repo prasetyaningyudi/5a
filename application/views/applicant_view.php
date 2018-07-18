@@ -11,6 +11,17 @@
 			</div>
 			</div>
 			<div class="w3-col" style="width:55%">
+				<div class="w3-row" style="margin-bottom:10px">
+					<div class="w3-col" style="width:30%;margin-right:2%">
+						Posisi Lowongan
+					</div>
+					<div class="w3-col" style="width:3%">
+						:
+					</div>					
+					<div class="w3-col" style="width:65%">
+						<?php echo $item->POSISI_LOWONGAN;?>
+					</div>
+				</div>			
 			<div class="w3-container w3-display-container w3-green w3-block">
 				<h3 class="w3-green">Data Pelamar</h3>
 			</div><br>

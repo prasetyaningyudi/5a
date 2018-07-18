@@ -3,7 +3,22 @@
 </div>
 <div class="w3-card-2">
 <form action="" method="post" enctype="multipart/form-data">
+	<div class="w3-container w3-display-container w3-green w3-block">
+		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
+		<h3 class="w3-green">Posisi Lowongan</h3>
+	</div>
+	<div class="w3-container w3-show">
+		
+		<p>
 
+		<select class="w3-select" name="posisi_lowongan">
+			<option value="0" disabled selected>Pilih posisi yang diinginkan</option>
+			<?php foreach ($result as $item):?>
+			<option value="<?php echo $item->ID;?>"><?php echo $item->POSISI_LOWONGAN;?></option>
+			<?php endforeach; ?>
+		</select>
+		</p>
+	</div>
 	<div class="w3-container w3-display-container w3-green w3-block" onclick="myFunction('content_1')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Data Pelamar</h3>
@@ -72,7 +87,7 @@
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Pengalaman Kerja Terakhir</h3>
 	</div>	
-	<div class="w3-container w3-hide" id="content_3">
+	<div class="w3-container w3-show" id="content_3">
 		<p>
 		<label>Perusahaan</label>
 		<input class="w3-input w3-border" type="text" name="perusahaan" placeholder="Perusahaan">
@@ -98,7 +113,7 @@
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Pendidikan Terakhir</h3>
 	</div>	
-	<div class="w3-container w3-hide" id="content_4">
+	<div class="w3-container w3-show" id="content_4">
 		<p>
 		<label>Tingkat Pendidikan</label>
 		<input class="w3-input w3-border" type="text" name="tingkat" placeholder="Tingkat Pendidikan" required>
@@ -125,7 +140,7 @@
 		<h3 class="w3-green">Ceklist</h3>
 	</div>	
 
-	<div class="w3-container w3-hide" id="content_5">
+	<div class="w3-container w3-show" id="content_5">
 		<p>
 		<input name="cek_1" id="cek_1" class="w3-check" type="checkbox">
 		<label>Saya bersedia untuk ditempatkan dimana saja</label>
