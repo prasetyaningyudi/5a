@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2018 at 06:17 AM
+-- Generation Time: Jul 18, 2018 at 01:32 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -36,6 +36,19 @@ CREATE TABLE `file` (
   `FILE_SIZE` varchar(255) NOT NULL,
   `CREATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UPDATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lowongan`
+--
+
+CREATE TABLE `lowongan` (
+  `ID` int(11) NOT NULL,
+  `POSISI_LOWONGAN` text NOT NULL,
+  `STATUS_POSISI` varchar(1) NOT NULL DEFAULT '1',
+  `CREATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -77,7 +90,8 @@ CREATE TABLE `pelamar` (
   `CEK_4` varchar(50) NOT NULL,
   `LINK_CV` text NOT NULL,
   `LINK_PHOTO` text NOT NULL,
-  `CREATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `CREATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `LOWONGAN_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -214,6 +228,12 @@ ALTER TABLE `file`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `lowongan`
+--
+ALTER TABLE `lowongan`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `menu`
 --
 ALTER TABLE `menu`
@@ -224,7 +244,8 @@ ALTER TABLE `menu`
 -- Indexes for table `pelamar`
 --
 ALTER TABLE `pelamar`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `fk_PELAMAR_LOWONGAN1_idx` (`LOWONGAN_ID`);
 
 --
 -- Indexes for table `pendidikan`
@@ -291,6 +312,12 @@ ALTER TABLE `user_data`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `lowongan`
+--
+ALTER TABLE `lowongan`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -362,6 +389,12 @@ ALTER TABLE `user_data`
 --
 ALTER TABLE `menu`
   ADD CONSTRAINT `fk_MENU_MENU1` FOREIGN KEY (`MENU_ID`) REFERENCES `menu` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `pelamar`
+--
+ALTER TABLE `pelamar`
+  ADD CONSTRAINT `fk_PELAMAR_LOWONGAN1` FOREIGN KEY (`LOWONGAN_ID`) REFERENCES `lowongan` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `pendidikan`
