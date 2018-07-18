@@ -95,7 +95,7 @@ class Job extends CI_Controller {
 				//var_dump($this->data['insert3']);echo '<br>';
 			}
 			
-			redirect('job/pelamar/'.$last_id);
+			redirect('job/applicant/'.$last_id);
 		}else{
 			$this->load->view('section_header');
 			$this->load->view('application_form');
@@ -103,8 +103,22 @@ class Job extends CI_Controller {
 		}
 	}
 	
-	public function pelamar($id=null){
-		
+	public function applicant($id=null){
+		if($id != null){
+			$filter = array();
+			$filter[] = "A.ID = ".$id;
+			$this->data['result'] = $this->job_model->get_pelamar($filter);
+			
+			$this->load->view('section_header');
+			$this->load->view('applicant_view', $this->data);
+			$this->load->view('section_footer');			
+		}else{
+			$this->data['result'] = $this->job_model->get_pelamar();
+			$this->load->view('section_header');
+			$this->load->view('applicant_all_view', $this->data);
+			$this->load->view('section_footer');			
+		}
+			
 	}
 
 	public function update($id=null){
