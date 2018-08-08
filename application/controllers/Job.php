@@ -1,8 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Job extends CI_Controller {
 	private $data;
+	private $_objPHPExcel;
 	
 	public function __construct(){
 		parent::__construct();
@@ -136,12 +138,89 @@ class Job extends CI_Controller {
 			
 	}
 
-	public function update($id=null){
-
-	}
-
-	public function delete($id=null){
+	public function download(){
+		$data = $this->job_model->get_pelamar_download();
+		$i = 0;
+		$content = array();		
+		$subbody = array();
+		foreach ($data as $value) {
+			foreach($value as $key => $val){
+				if($i == 0){
+					$subbody[]	= $key;
+				}
+			}
+			$i++;				
+			if($i > 0){
+				break;
+			}	
+		}
+		$content[] = $subbody;
 		
+		foreach ($data as $value) {
+			$subbody = array();
+			foreach($value as $val){
+				$subbody[]	= $val;
+			}
+			$content[] = $subbody;
+		}		
+		
+		$this->_objPHPExcel = new PHPExcel();
+		$title = 'Data Pelamar';
+		$titleXLS = $title.'.xlsx';
+		$this->_objPHPExcel->getProperties()->setCreator("SITP - DJPBN - KEMENKEU")
+									 ->setLastModifiedBy("SITP - DJPBN - KEMENKEU")
+									 ->setTitle($title)
+									 ->setSubject($title)
+									 ->setDescription($title)
+									 ->setKeywords("sitp omspan xls")
+									 ->setCategory("sitp omspan xls");		
+
+		//$pdf->set_html($this->set_pdf_header());
+		
+		
+		//$this->set_html();
+
+		// This method has several options
+		$this->_objPHPExcel->setActiveSheetIndex(0);
+		$this->_objPHPExcel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+		$this->_objPHPExcel->getActiveSheet()->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_LEGAL);
+		
+
+		$this->placing_data($content);
+		
+		//Generate Output
+		$objWriter = PHPExcel_IOFactory::createWriter($this->_objPHPExcel, "Excel2007");
+		// Redirect output to a client’s web browser (Excel2007)
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header("Content-Disposition: attachment;filename=\"$titleXLS\"");
+		header('Cache-Control: max-age=0');
+		// If you're serving to IE 9, then the following may be needed
+		header('Cache-Control: max-age=1');
+
+		// If you're serving to IE over SSL, then the following may be needed
+		header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+		header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+		header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+		header ('Pragma: public'); // HTTP/1.0
+
+		$objWriter = PHPExcel_IOFactory::createWriter($this->_objPHPExcel, 'Excel2007');
+		$objWriter->save('php://output');
+		exit;							 
+	}
+	
+	public function placing_data($data){
+		$this->_objPHPExcel->getActiveSheet()->setCellValue('A1', 'DATA PELAMAR');
+		$cursor_a = 'A';
+		$cursor_b = '3';
+		
+		foreach($data as $value){
+			$current_cursor_a = $cursor_a;
+			foreach($value as $val){
+				$this->_objPHPExcel->getActiveSheet()->setCellValue($cursor_a++.$cursor_b, $val);
+			}	
+			$cursor_a = $current_cursor_a;
+			$cursor_b++;
+		}				
 	}
 }
 

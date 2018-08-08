@@ -1,5 +1,13 @@
 <div class="w3-container">
-<h1 class="w3-center w3-text-green">Data Pelamar</h1>
+
+<div class="row">
+	<div class="w3-col" style="width:60%;margin-right:5%">
+		<h1 class="w3-left w3-text-green">Data Pelamar</h1>
+	</div>
+	<div class="w3-col w3-right" style="width:35px;padding-top:17px">
+		<a class="w3-right w3-btn w3-teal" href="<?php echo base_url().'/job/download/';?>">IMPORT EXCEL</a>
+	</div>
+</div>
 <table class="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
 <tbody>
 <tr class="w3-green">
