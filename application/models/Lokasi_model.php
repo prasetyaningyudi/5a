@@ -17,7 +17,7 @@ class Lokasi_model extends CI_Model {
 				$sql .= " AND " . $filter;
 			}
 		}
-		$sql .= " ORDER BY ID DESC";
+		$sql .= " ORDER BY NAMA_LOKASI ASC";
 		//var_dump($sql); die;
 		
 		$query = $this->db->query($sql);

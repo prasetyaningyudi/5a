@@ -10,9 +10,8 @@
 	<div class="w3-container w3-show">
 		
 		<p>
-
+		<label>Pilih Posisi Lowongan</label>
 		<select class="w3-select" name="posisi_lowongan">
-			<option value="0" disabled selected>Pilih posisi yang diinginkan</option>
 			<?php foreach ($result as $item):?>
 			<option value="<?php echo $item->ID;?>"><?php echo $item->POSISI_LOWONGAN;?></option>
 			<?php endforeach; ?>
@@ -34,6 +33,11 @@
 		<input class="w3-input w3-border" type="text" name="telepon" placeholder="No. Telepon" required>
 		</p>
 
+		<p>
+		<label>Email</label>
+		<input class="w3-input w3-border" type="email" name="email" placeholder="Email" required>
+		</p>
+		
 		<p>
 		<label>Alamat</label>
 		<textarea class="w3-input w3-border" name="alamat"  style="resize:none" placeholder="Alamat" required></textarea>
@@ -120,8 +124,23 @@
 		</p>
 		
 		<p>
+		<label>Universitas</label>
+		<input class="w3-input w3-border" type="text" name="universitas" placeholder="Universitas" required>
+		</p>		
+		
+		<p>
+		<label>Fakultas</label>
+		<input class="w3-input w3-border" type="text" name="fakultas" placeholder="Fakultas" required>
+		</p>		
+		
+		<p>
 		<label>Jurusan</label>
 		<input class="w3-input w3-border" type="text" name="jurusan" placeholder="Jurusan" required>
+		</p>		
+		
+		<p>
+		<label>IPK</label>
+		<input class="w3-input w3-border" type="text" name="ipk" placeholder="IPK" required>
 		</p>	
 
 		<p>
@@ -132,9 +151,26 @@
 		<input class="w3-border w3-input w3-col" type="date" name="akhir_pendidikan" required style="width:40%">
 		</div>
 		</p>			
-	</div>	
-
+	</div>
 	<br>
+	
+	<div class="w3-container w3-display-container w3-green w3-block">
+		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
+		<h3 class="w3-green">Lokasi Tes</h3>
+	</div>
+	<div class="w3-container w3-show">
+		
+		<p>
+		<label>Pilih lokasi tes</label>
+		<select class="w3-select" name="lokasi_tes">
+			<?php foreach ($result1 as $item1):?>
+			<option value="<?php echo $item1->ID;?>"><?php echo $item1->NAMA_LOKASI;?></option>
+			<?php endforeach; ?>
+		</select>
+		</p>
+	</div>
+	<br>
+	
 	<div class="w3-container w3-display-container w3-green  w3-block" onclick="myFunction('content_5')">
 		<div class="w3-padding w3-display-right"><i class="fa fa-angle-down fa-lg"></i></div>
 		<h3 class="w3-green">Ceklist</h3>

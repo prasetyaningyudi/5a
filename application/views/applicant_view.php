@@ -3,17 +3,19 @@
 	<div class="w3-row">
 		<?php foreach ($result as $item):?>
 			<div class="w3-col" style="width:40%;margin-right:5%">
-			<div class="w3-card">
-			<img src="<?php echo $item->LINK_PHOTO;?>" alt="Pelamar" style="width:100%">
-			<div class="w3-container">
-			  <h4><b><a href="<?php echo $item->LINK_CV;?>" title="CV">Link CV</a></b></h4>
-			</div>
-			</div>
-			</div>
-			<div class="w3-col" style="width:55%">
+				<div class="w3-card">
+				<img src="<?php echo $item->LINK_PHOTO;?>" alt="Pelamar" style="width:100%">
+				<div class="w3-container">
+				  <h4><b><a href="<?php echo $item->LINK_CV;?>" title="CV">Link CV</a></b></h4>
+				</div>
+				</div>
+				<br>
+				<div class="w3-container w3-display-container w3-green w3-block">
+					<h3 class="w3-green">Posisi Lowongan</h3>
+				</div>	<br>			
 				<div class="w3-row" style="margin-bottom:10px">
 					<div class="w3-col" style="width:30%;margin-right:2%">
-						Posisi Lowongan
+						Nama Posisi
 					</div>
 					<div class="w3-col" style="width:3%">
 						:
@@ -21,7 +23,23 @@
 					<div class="w3-col" style="width:65%">
 						<?php echo $item->POSISI_LOWONGAN;?>
 					</div>
-				</div>			
+				</div><br>				
+				<div class="w3-container w3-display-container w3-green w3-block">
+					<h3 class="w3-green">Lokasi Tes</h3>
+				</div>	<br>
+					<div class="w3-row" style="margin-bottom:10px">
+						<div class="w3-col" style="width:30%;margin-right:2%">
+							Nama Lokasi
+						</div>
+						<div class="w3-col" style="width:3%">
+							:
+						</div>					
+						<div class="w3-col" style="width:65%">
+							<?php echo $item->NAMA_LOKASI;?>
+						</div>
+					</div>					
+			</div>
+			<div class="w3-col" style="width:55%">		
 			<div class="w3-container w3-display-container w3-green w3-block">
 				<h3 class="w3-green">Data Pelamar</h3>
 			</div><br>
@@ -47,6 +65,17 @@
 						<?php echo $item->TELEPON;?>
 					</div>
 				</div>
+				<div class="w3-row"  style="margin-bottom:10px">
+					<div class="w3-col" style="width:30%;margin-right:2%">
+						Email
+					</div>
+					<div class="w3-col" style="width:3%">
+						:
+					</div>					
+					<div class="w3-col" style="width:65%">
+						<?php echo $item->EMAIL;?>
+					</div>
+				</div>				
 				<div class="w3-row"  style="margin-bottom:10px">
 					<div class="w3-col" style="width:30%;margin-right:2%">
 						Alamat
@@ -160,6 +189,28 @@
 				</div>	
 				<div class="w3-row"  style="margin-bottom:10px">
 					<div class="w3-col" style="width:30%;margin-right:2%">
+						 Universitas
+					</div>
+					<div class="w3-col" style="width:3%">
+						:
+					</div>					
+					<div class="w3-col" style="width:65%">
+						<?php echo $item->UNIVERSITAS;?>
+					</div>
+				</div>			
+				<div class="w3-row"  style="margin-bottom:10px">
+					<div class="w3-col" style="width:30%;margin-right:2%">
+						 Fakultas
+					</div>
+					<div class="w3-col" style="width:3%">
+						:
+					</div>					
+					<div class="w3-col" style="width:65%">
+						<?php echo $item->FAKULTAS;?>
+					</div>
+				</div>					
+				<div class="w3-row"  style="margin-bottom:10px">
+					<div class="w3-col" style="width:30%;margin-right:2%">
 						 Jurusan
 					</div>
 					<div class="w3-col" style="width:3%">
@@ -169,6 +220,17 @@
 						<?php echo $item->JURUSAN;?>
 					</div>
 				</div>
+				<div class="w3-row"  style="margin-bottom:10px">
+					<div class="w3-col" style="width:30%;margin-right:2%">
+						 IPK
+					</div>
+					<div class="w3-col" style="width:3%">
+						:
+					</div>					
+					<div class="w3-col" style="width:65%">
+						<?php echo $item->IPK;?>
+					</div>
+				</div>					
 				<div class="w3-row"  style="margin-bottom:10px">
 					<div class="w3-col" style="width:30%;margin-right:2%">
 						 Periode
@@ -193,13 +255,13 @@
 			<h3 class="w3-green">Ceklist</h3>
 		</div><br>
 			<div class="w3-row"  style="margin-bottom:10px">
-				<div class="w3-col" style="width:50%;margin-right:2%">
+				<div class="w3-col" style="width:45%;margin-right:2%">
 					 Bersedia untuk ditempatkan dimana saja
 				</div>
 				<div class="w3-col" style="width:3%">
 					:
 				</div>					
-				<div class="w3-col" style="width:45%">
+				<div class="w3-col" style="width:50%">
 					<?php if($item->CEK_1 == 'on'): ?>
 						<i class="fa fa-check fa-lg"></i>
 					<?php else: ?>
@@ -208,13 +270,13 @@
 				</div>
 			</div>	
 			<div class="w3-row"  style="margin-bottom:10px">
-				<div class="w3-col" style="width:50%;margin-right:2%">
+				<div class="w3-col" style="width:45%;margin-right:2%">
 					 Memiliki keluarga/kerabat yang bekerja di AAL
 				</div>
 				<div class="w3-col" style="width:3%">
 					:
 				</div>					
-				<div class="w3-col" style="width:45%">
+				<div class="w3-col" style="width:50%">
 					<?php if($item->CEK_2 == 'on'): ?>
 						<i class="fa fa-check fa-lg"></i>
 					<?php else: ?>
@@ -223,13 +285,13 @@
 				</div>
 			</div>
 			<div class="w3-row"  style="margin-bottom:10px">
-				<div class="w3-col" style="width:50%;margin-right:2%">
+				<div class="w3-col" style="width:45%;margin-right:2%">
 					 Memiliki riwayat penyakit kronis/pengalaman kecelakaan
 				</div>
 				<div class="w3-col" style="width:3%">
 					:
 				</div>					
-				<div class="w3-col" style="width:45%">
+				<div class="w3-col" style="width:50%">
 					<?php if($item->CEK_3 == 'on'): ?>
 						<i class="fa fa-check fa-lg"></i>
 					<?php else: ?>

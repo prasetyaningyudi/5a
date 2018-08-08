@@ -7,6 +7,7 @@ class Job_model extends CI_Model {
 	private $_table2 = "PENDIDIKAN";
 	private $_table3 = "PENGALAMAN_KERJA";
 	private $_table4 = "LOWONGAN";
+	private $_table5 = "LOKASI_TES";
 
     public function __construct(){
 		parent::__construct();
@@ -45,9 +46,9 @@ class Job_model extends CI_Model {
 	}
 	
 	public function get_pelamar($filters=null){
-		$sql = "SELECT A.*, B.TINGKAT, B.JURUSAN, B.AWAL_PENDIDIKAN, B.AKHIR_PENDIDIKAN, B.PELAMAR_ID, C.NAMA_PERUSAHAAN, 
-				C.POSISI, C.AWAL_KERJA, C.AKHIR_KERJA, C.PELAMAR_ID, D.ID, D.POSISI_LOWONGAN FROM " . $this->_table1 . " A LEFT JOIN " . 
-				$this->_table2 . " B ON A.ID=B.PELAMAR_ID LEFT JOIN " . $this->_table3 . " C ON A.ID= C.PELAMAR_ID LEFT JOIN " . $this->_table4 . " D ON A.LOWONGAN_ID=D.ID ";
+		$sql = "SELECT A.*, B.TINGKAT, B.UNIVERSITAS, B.FAKULTAS, B.JURUSAN, B.IPK, B.AWAL_PENDIDIKAN, B.AKHIR_PENDIDIKAN, B.PELAMAR_ID, C.NAMA_PERUSAHAAN, 
+				C.POSISI, C.AWAL_KERJA, C.AKHIR_KERJA, C.PELAMAR_ID, D.POSISI_LOWONGAN, E.NAMA_LOKASI FROM " . $this->_table1 . " A LEFT JOIN " . 
+				$this->_table2 . " B ON A.ID=B.PELAMAR_ID LEFT JOIN " . $this->_table3 . " C ON A.ID= C.PELAMAR_ID LEFT JOIN " . $this->_table4 . " D ON A.LOWONGAN_ID=D.ID LEFT JOIN " . $this->_table5 . " E ON A.LOKASI_TES_ID=E.ID ";
 		$sql .= " WHERE 1=1 ";
 		if(isset($filters) and $filters != null){
 			foreach ($filters as $filter) {

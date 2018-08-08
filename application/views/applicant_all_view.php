@@ -7,8 +7,8 @@
   <th>NAMA</th>
   <th>TELEPON</th>
   <th>JENIS KELAMIN</th>
-  <th>STATUS</th>
   <th>POSISI</th>
+  <th>LOKASI</th>
   <th>DATE ADDED</th>
   <th>LINK CV</th>
   <th>LINK PHOTO</th>
@@ -21,8 +21,8 @@
   <td><?php echo $item->NAMA;?></td>
   <td><?php echo $item->TELEPON;?></td>
   <td><?php echo $item->JENIS_KELAMIN;?></td>
-  <td><?php echo $item->STATUS_PERNIKAHAN;?></td>
   <td><?php echo $item->POSISI_LOWONGAN;?></td>
+  <td><?php echo $item->NAMA_LOKASI;?></td>
   <td><?php $time = strtotime($item->CREATE_DATE);
 									echo date('d M Y H:i:s',$time); ?></td>
   <td><a target="_blank" href="<?php echo $item->LINK_CV;?>">CV</a></td>

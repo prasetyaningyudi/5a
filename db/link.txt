@@ -1,0 +1,8 @@
+http://localhost/5a/job/application
+http://localhost/5a/job/applicant/
+
+http://localhost/5a/lowongan/insert
+http://localhost/5a/lowongan
+
+http://localhost/5a/lokasi/insert
+http://localhost/5a/lokasi

@@ -17,7 +17,7 @@ class Lowongan_model extends CI_Model {
 				$sql .= " AND " . $filter;
 			}
 		}
-		$sql .= " ORDER BY ID DESC";
+		$sql .= " ORDER BY POSISI_LOWONGAN ASC";
 		//var_dump($sql); die;
 		
 		$query = $this->db->query($sql);

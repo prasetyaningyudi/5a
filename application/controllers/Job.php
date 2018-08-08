@@ -11,6 +11,7 @@ class Job extends CI_Controller {
 		$this->load->database();
 		$this->load->model('job_model');
 		$this->load->model('lowongan_model');
+		$this->load->model('lokasi_model');
 	}
 
 	public function index(){		
@@ -58,6 +59,7 @@ class Job extends CI_Controller {
 			$this->data['insert1'] = array(
 				'NAMA' => $_POST['nama'],
 				'TELEPON' => $_POST['telepon'],
+				'EMAIL' => $_POST['email'],
 				'ALAMAT' => $_POST['alamat'],
 				'JENIS_KELAMIN' => $_POST['jenis_kelamin'],
 				'TEMPAT_LAHIR' => $_POST['tempat_lahir'],
@@ -70,6 +72,7 @@ class Job extends CI_Controller {
 				'LINK_CV' => $link_cv,
 				'LINK_PHOTO' => $link_photo,
 				'LOWONGAN_ID' => $_POST['posisi_lowongan'],
+				'LOKASI_TES_ID' => $_POST['lokasi_tes'],
 			);	
 
 			$last_id = $this->job_model->insert_pelamar($this->data['insert1']);
@@ -77,7 +80,10 @@ class Job extends CI_Controller {
 			
 			$this->data['insert2'] = array(
 				'TINGKAT' => $_POST['tingkat'],
+				'UNIVERSITAS' => $_POST['universitas'],
+				'FAKULTAS' => $_POST['fakultas'],
 				'JURUSAN' => $_POST['jurusan'],
+				'IPK' => $_POST['ipk'],
 				'AWAL_PENDIDIKAN' => $_POST['awal_pendidikan'],
 				'AKHIR_PENDIDIKAN' => $_POST['akhir_pendidikan'],
 				'PELAMAR_ID' => $last_id,
@@ -100,8 +106,11 @@ class Job extends CI_Controller {
 			redirect('job/applicant/'.$last_id);
 		}else{
 			$filter = array();
+			$filter1 = array();
 			$filter[] = "STATUS_POSISI = '1'";
+			$filter1[] = "STATUS_LOKASI = '1'";
 			$this->data['result'] = $this->lowongan_model->get_lowongan($filter);
+			$this->data['result1'] = $this->lokasi_model->get_lokasi($filter1);
 			
 			$this->load->view('section_header');
 			$this->load->view('application_form', $this->data);
