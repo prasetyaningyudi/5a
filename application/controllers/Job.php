@@ -37,6 +37,20 @@ class Job extends CI_Controller {
 			$file_type=$_FILES['photo']['type'];			
 			move_uploaded_file($file_tmp, FCPATH . "assets/images/".$file_name2);
 			$link_photo = base_url()."assets/images/".$file_name2;
+			
+			$file_name3 = date('Y-m-d-h-i-sa').'_'.$_FILES['ijazah']['name'];
+			$file_size =$_FILES['ijazah']['size'];
+			$file_tmp =$_FILES['ijazah']['tmp_name'];
+			$file_type=$_FILES['ijazah']['type'];			
+			move_uploaded_file($file_tmp, FCPATH . "assets/files/".$file_name3);
+			$link_ijazah = base_url()."assets/files/".$file_name3;
+
+			$file_name4 = date('Y-m-d-h-i-sa').'_'.$_FILES['transkrip']['name'];
+			$file_size =$_FILES['transkrip']['size'];
+			$file_tmp =$_FILES['transkrip']['tmp_name'];
+			$file_type=$_FILES['transkrip']['type'];			
+			move_uploaded_file($file_tmp, FCPATH . "assets/files/".$file_name4);
+			$link_transkrip = base_url()."assets/files/".$file_name4;			
 
 			if(isset($_POST['cek_1'])){
 				$cek_1 = $_POST['cek_1'];
@@ -73,6 +87,8 @@ class Job extends CI_Controller {
 				'CEK_4' => $cek_4,
 				'LINK_CV' => $link_cv,
 				'LINK_PHOTO' => $link_photo,
+				'LINK_IJAZAH' => $link_ijazah,
+				'LINK_TRANSKRIP' => $link_transkrip,
 				'LOWONGAN_ID' => $_POST['posisi_lowongan'],
 				'LOKASI_TES_ID' => $_POST['lokasi_tes'],
 			);	

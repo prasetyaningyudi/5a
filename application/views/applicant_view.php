@@ -6,7 +6,17 @@
 				<div class="w3-card">
 				<img src="<?php echo $item->LINK_PHOTO;?>" alt="Pelamar" style="width:100%">
 				<div class="w3-container">
-				  <h4><b><a href="<?php echo $item->LINK_CV;?>" title="CV">Link CV</a></b></h4>
+					<div class="w3-row">
+						<div class="w3-col" style="width:33%">
+						<h4><b><a target="_blank" href="<?php echo $item->LINK_CV;?>" title="CV">Link CV</a></b></h4>
+						</div>
+						<div class="w3-col" style="width:33%;text-align:center">
+						<h4><b><a target="_blank" href="<?php echo $item->LINK_IJAZAH;?>" title="Ijazah">Ijazah</a></b></h4>
+						</div>
+						<div class="w3-col" style="width:33%;text-align:right">
+						<h4><b><a target="_blank" href="<?php echo $item->LINK_TRANSKRIP;?>" title="Transkrip">Transkrip</a></b></h4>
+						</div>						
+					</div>
 				</div>
 				</div>
 				<br>

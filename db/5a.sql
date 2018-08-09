@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2018 at 05:28 AM
+-- Generation Time: Aug 09, 2018 at 05:47 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -56,9 +56,7 @@ CREATE TABLE `lokasi_tes` (
 --
 
 INSERT INTO `lokasi_tes` (`ID`, `NAMA_LOKASI`, `STATUS_LOKASI`, `CREATE_DATE`) VALUES
-(1, 'Tangerang', '0', '2018-08-08 09:14:03'),
-(2, 'Jakarta', '1', '2018-08-08 09:14:26'),
-(3, 'Surabaya', '1', '2018-08-08 09:14:34');
+(1, 'Jakarta', '1', '2018-08-09 10:38:24');
 
 -- --------------------------------------------------------
 
@@ -78,9 +76,7 @@ CREATE TABLE `lowongan` (
 --
 
 INSERT INTO `lowongan` (`ID`, `POSISI_LOWONGAN`, `STATUS_POSISI`, `CREATE_DATE`) VALUES
-(1, 'HRD', '0', '2018-08-08 09:32:38'),
-(2, 'Sekretaris', '1', '2018-08-08 09:32:48'),
-(3, 'Direktur', '1', '2018-08-08 09:32:54');
+(1, 'HRD', '1', '2018-08-09 10:38:07');
 
 -- --------------------------------------------------------
 
@@ -122,6 +118,8 @@ CREATE TABLE `pelamar` (
   `CEK_4` varchar(50) NOT NULL,
   `LINK_CV` text NOT NULL,
   `LINK_PHOTO` text NOT NULL,
+  `LINK_IJAZAH` text NOT NULL,
+  `LINK_TRANSKRIP` text NOT NULL,
   `CREATE_DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `LOWONGAN_ID` int(11) NOT NULL,
   `LOKASI_TES_ID` int(11) NOT NULL
@@ -131,9 +129,8 @@ CREATE TABLE `pelamar` (
 -- Dumping data for table `pelamar`
 --
 
-INSERT INTO `pelamar` (`ID`, `NAMA`, `TELEPON`, `EMAIL`, `ALAMAT`, `JENIS_KELAMIN`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `STATUS_PERNIKAHAN`, `CEK_1`, `CEK_2`, `CEK_3`, `CEK_4`, `LINK_CV`, `LINK_PHOTO`, `CREATE_DATE`, `LOWONGAN_ID`, `LOKASI_TES_ID`) VALUES
-(2, 'Yudi Prasetyo', '081329680342', 'prasetyaningyudi@gmail.com', 'klaten', 'Pria', 'Klaten', '1984-10-26', 'Kawin', 'on', 'off', 'off', 'on', 'http://localhost/5a/assets/files/2018-08-08-09-43-43am_Pidi Baiq - Dilan 1991 (Bagian #2).pdf', 'http://localhost/5a/assets/images/2018-08-08-09-43-43am_1-avatar.png', '2018-08-08 09:43:43', 2, 3),
-(3, 'IMAS MASKANAH', '085762443544', 'badog.kingers@gmail.com', 'dddd', 'Wanita', 'klaten', '2018-08-13', 'Belum Kawin', 'on', 'on', 'on', 'on', 'http://localhost/5a/assets/files/2018-08-08-10-18-08am_Data Produksi.pdf', 'http://localhost/5a/assets/images/2018-08-08-10-18-08am_hand.png', '2018-08-08 10:18:08', 3, 3);
+INSERT INTO `pelamar` (`ID`, `NAMA`, `TELEPON`, `EMAIL`, `ALAMAT`, `JENIS_KELAMIN`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `STATUS_PERNIKAHAN`, `CEK_1`, `CEK_2`, `CEK_3`, `CEK_4`, `LINK_CV`, `LINK_PHOTO`, `LINK_IJAZAH`, `LINK_TRANSKRIP`, `CREATE_DATE`, `LOWONGAN_ID`, `LOKASI_TES_ID`) VALUES
+(1, 'Yudi Prasetyo', '081329680342', 'prasetyaningyudi@gmail.com', 'kalten', 'Pria', 'Klaten', '2018-07-31', 'Belum Kawin', 'on', 'off', 'off', 'on', 'http://localhost/5a/assets/files/2018-08-09-10-39-23am_Data Produksi.pdf', 'http://localhost/5a/assets/images/2018-08-09-10-39-23am_1-avatar.png', 'http://localhost/5a/assets/files/2018-08-09-10-39-23am_hand.png', 'http://localhost/5a/assets/files/2018-08-09-10-39-23am_ss1.JPG', '2018-08-09 10:39:23', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -158,8 +155,7 @@ CREATE TABLE `pendidikan` (
 --
 
 INSERT INTO `pendidikan` (`ID`, `TINGKAT`, `UNIVERSITAS`, `FAKULTAS`, `JURUSAN`, `IPK`, `AWAL_PENDIDIKAN`, `AKHIR_PENDIDIKAN`, `PELAMAR_ID`) VALUES
-(1, 'S1', 'ITS', 'SI', 'Sistem Informasi', '3.56', '2018-08-05', '2018-08-17', 2),
-(2, 'S1', 'ITS', 'SI', 'Sistem Informasi', '3.56', '2018-08-06', '2018-08-22', 3);
+(1, 'S1', 'ITS', 'SI', 'Sistem Informasi', '3.56', '2018-08-08', '2018-08-22', 1);
 
 -- --------------------------------------------------------
 
@@ -181,8 +177,7 @@ CREATE TABLE `pengalaman_kerja` (
 --
 
 INSERT INTO `pengalaman_kerja` (`ID`, `NAMA_PERUSAHAAN`, `POSISI`, `AWAL_KERJA`, `AKHIR_KERJA`, `PELAMAR_ID`) VALUES
-(1, 'PT A', 'sekre', '0000-00-00', '0000-00-00', 2),
-(2, 'PT ABC', 'DIREKTUR', '2018-08-07', '2018-08-29', 3);
+(1, 'PT A', 'DIREKTUR', '2018-08-07', '2018-08-20', 1);
 
 -- --------------------------------------------------------
 
@@ -385,13 +380,13 @@ ALTER TABLE `file`
 -- AUTO_INCREMENT for table `lokasi_tes`
 --
 ALTER TABLE `lokasi_tes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lowongan`
 --
 ALTER TABLE `lowongan`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -403,19 +398,19 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `pelamar`
 --
 ALTER TABLE `pelamar`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pendidikan`
 --
 ALTER TABLE `pendidikan`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengalaman_kerja`
 --
 ALTER TABLE `pengalaman_kerja`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ref_type`
