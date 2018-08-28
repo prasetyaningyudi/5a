@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lowongan_model extends CI_Model {
 	
-	private $_table1 = "LOWONGAN";
+	private $_table1 = "lowongan";
 
     public function __construct(){
 		parent::__construct();

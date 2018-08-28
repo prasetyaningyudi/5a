@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lokasi_model extends CI_Model {
 	
-	private $_table1 = "LOKASI_TES";
+	private $_table1 = "lokasi_tes";
 
     public function __construct(){
 		parent::__construct();

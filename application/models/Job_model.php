@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Job_model extends CI_Model {
 	
-	private $_table1 = "PELAMAR";
-	private $_table2 = "PENDIDIKAN";
-	private $_table3 = "PENGALAMAN_KERJA";
-	private $_table4 = "LOWONGAN";
-	private $_table5 = "LOKASI_TES";
+	private $_table1 = "pelamar";
+	private $_table2 = "pendidikan";
+	private $_table3 = "pengalaman_kerja";
+	private $_table4 = "lowongan";
+	private $_table5 = "lokasi_tes";
 
     public function __construct(){
 		parent::__construct();
@@ -31,17 +31,17 @@ class Job_model extends CI_Model {
 	} */
 	
 	public function insert_pelamar($data){
-		$this->db->insert('PELAMAR', $data);
+		$this->db->insert($this->_table1, $data);
 		return $this->db->insert_id();
 	}
 	
 	public function insert_pendidikan($data){
-		$this->db->insert('PENDIDIKAN', $data);
+		$this->db->insert($this->_table2, $data);
 		return $this->db->insert_id();
 	}
 	
 	public function insert_pengalaman($data){
-		$this->db->insert('PENGALAMAN_KERJA', $data);
+		$this->db->insert($this->_table3, $data);
 		return $this->db->insert_id();		
 	}
 	
