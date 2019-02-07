@@ -45,7 +45,7 @@ class Job_model extends CI_Model {
 		return $this->db->insert_id();		
 	}
 	
-	public function get_pelamar($filters=null){
+	public function get_pelamar($filters=null, $limit=null){
 		$sql = "SELECT A.*, B.TINGKAT, B.UNIVERSITAS, B.FAKULTAS, B.JURUSAN, B.IPK, B.AWAL_PENDIDIKAN, B.AKHIR_PENDIDIKAN, B.PELAMAR_ID, C.NAMA_PERUSAHAAN, 
 				C.POSISI, C.AWAL_KERJA, C.AKHIR_KERJA, C.PELAMAR_ID, D.POSISI_LOWONGAN, E.NAMA_LOKASI FROM " . $this->_table1 . " A LEFT JOIN " . 
 				$this->_table2 . " B ON A.ID=B.PELAMAR_ID LEFT JOIN " . $this->_table3 . " C ON A.ID= C.PELAMAR_ID LEFT JOIN " . $this->_table4 . " D ON A.LOWONGAN_ID=D.ID LEFT JOIN " . $this->_table5 . " E ON A.LOKASI_TES_ID=E.ID ";
@@ -56,6 +56,9 @@ class Job_model extends CI_Model {
 			}
 		}
 		$sql .= " ORDER BY A.ID DESC";
+		if(isset($limit) and $limit != null){
+			$sql .= " LIMIT ".$limit[0]." OFFSET ".$limit[1];
+		}		
 		//var_dump($sql); die;
 		
 		$query = $this->db->query($sql);
@@ -64,7 +67,7 @@ class Job_model extends CI_Model {
 		return $result;			
 	}
 	
-	public function get_pelamar_download($filters=null){
+	public function get_pelamar_download($filters=null, $limit=null){
 		$sql = "SELECT A.ID, A.NAMA, A.TELEPON, A.EMAIL, A.ALAMAT, A.JENIS_KELAMIN, A.TEMPAT_LAHIR, A.TANGGAL_LAHIR, A.STATUS_PERNIKAHAN, A.CEK_1, A.CEK_2, A.CEK_3, A.CEK_4, A.LINK_CV, A.LINK_PHOTO, A.LINK_IJAZAH, A.LINK_TRANSKRIP, A.CREATE_DATE, B.TINGKAT TINGKAT_PENDIDIKAN, B.UNIVERSITAS, B.FAKULTAS, B.JURUSAN, B.IPK, B.AWAL_PENDIDIKAN, B.AKHIR_PENDIDIKAN, C.NAMA_PERUSAHAAN, C.POSISI, C.AWAL_KERJA, C.AKHIR_KERJA, D.POSISI_LOWONGAN, E.NAMA_LOKASI FROM " . $this->_table1 . " A LEFT JOIN " . 
 				$this->_table2 . " B ON A.ID=B.PELAMAR_ID LEFT JOIN " . $this->_table3 . " C ON A.ID= C.PELAMAR_ID LEFT JOIN " . $this->_table4 . " D ON A.LOWONGAN_ID=D.ID LEFT JOIN " . $this->_table5 . " E ON A.LOKASI_TES_ID=E.ID ";
 		$sql .= " WHERE 1=1 ";
@@ -74,6 +77,9 @@ class Job_model extends CI_Model {
 			}
 		}
 		$sql .= " ORDER BY A.ID DESC";
+		if(isset($limit) and $limit != null){
+			$sql .= " LIMIT ".$limit[0]." OFFSET ".$limit[1];
+		}			
 		//var_dump($sql); die;
 		
 		$query = $this->db->query($sql);

@@ -136,7 +136,14 @@ class Job extends CI_Controller {
 		}
 	}
 	
-	public function applicant($id=null){
+	public function applicant($id=null, $offset=null){
+		if($offset == 'null' or $offset == null){
+			$offset = '0';
+		}
+		$limit = array('1', $offset);
+		if($id == 'null'){
+			$id = null;
+		}
 		if($id != null){
 			$filter = array();
 			$filter[] = "A.ID = ".$id;
@@ -146,7 +153,8 @@ class Job extends CI_Controller {
 			$this->load->view('applicant_view', $this->data);
 			$this->load->view('section_footer');			
 		}else{
-			$this->data['result'] = $this->job_model->get_pelamar();
+			$this->data['result'] = $this->job_model->get_pelamar(null, $limit);
+			$this->data['offset'] = $offset;
 			$this->load->view('section_header');
 			$this->load->view('applicant_all_view', $this->data);
 			$this->load->view('section_footer');			
@@ -154,8 +162,12 @@ class Job extends CI_Controller {
 			
 	}
 
-	public function download(){
-		$data = $this->job_model->get_pelamar_download();
+	public function download($offset=null){
+		if($offset == null){
+			$offset = '0';
+		}
+		$limit = array('1', $offset);		
+		$data = $this->job_model->get_pelamar_download(null, $limit);
 		$i = 0;
 		$content = array();		
 		$subbody = array();
@@ -179,7 +191,7 @@ class Job extends CI_Controller {
 			}
 			$content[] = $subbody;
 		}		
-		
+		PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
 		$this->_objPHPExcel = new PHPExcel();
 		$title = 'Data Pelamar';
 		$titleXLS = $title.'.xlsx';
